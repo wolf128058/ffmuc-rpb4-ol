@@ -1,0 +1,4 @@
+---
+  - name: "*BATMAN Installation* : Reboot nach Ende der BATMAN Installationsschritte"
+    # https://docs.ansible.com/ansible/latest/modules/reboot_module.html
+    reboot:

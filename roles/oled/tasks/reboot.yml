@@ -1,0 +1,5 @@
+---
+  - name: "Reboot nach Konfigurationsänderung"
+    # https://docs.ansible.com/ansible/latest/modules/reboot_module.html
+    reboot:
+    when: ( raspberry_oled == "ja" )

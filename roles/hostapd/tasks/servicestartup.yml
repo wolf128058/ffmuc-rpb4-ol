@@ -1,0 +1,9 @@
+---
+  - name: "Service hostapd beim Booten und jetzt starten und das Laden der Unit Datei vom Service hostapd ermöglichen"
+    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
+    systemd:
+      name: hostapd
+      enabled: yes
+      masked: no
+      state: started
+    when: ( raspberry_wifi == "ja" )

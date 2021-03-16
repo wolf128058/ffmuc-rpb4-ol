@@ -1,0 +1,7 @@
+---
+  - name: "Konfiguration des Client-VLAN ohne Mesh-Netz"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/interfaces_client_ohne_mesh.j2
+      dest: /etc/network/interfaces
+    when: ( raspberry_clientvlan|length > 0 ) and ( raspberry_meshvlan|length == 0 )

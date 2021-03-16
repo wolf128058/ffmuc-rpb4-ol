@@ -1,0 +1,6 @@
+---
+  - name: "Update und Upgrade der APT-Pakete"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt: 
+      upgrade: dist
+      update_cache: yes

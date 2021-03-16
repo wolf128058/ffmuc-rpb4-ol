@@ -1,0 +1,7 @@
+---
+  - name: "Repo Adafruit_Python_SSD1306 klonen"
+    # https://docs.ansible.com/ansible/latest/modules/git_module.html
+    git:
+      repo: https://github.com/adafruit/Adafruit_Python_SSD1306.git
+      dest: /usr/local/src/Adafruit_Python_SSD1306
+    when: ( raspberry_oled == "ja" )

@@ -1,0 +1,9 @@
+---
+  - name: "Installation der Pakete git und python3-netifaces"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt: 
+      update_cache: yes
+      pkg:
+        - git
+        - python3-netifaces
+      state: present

@@ -1,0 +1,9 @@
+---
+  - name: "Service oled-bandwidth beim Booten starten"
+    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
+    systemd:
+      name: oled-bandwidth
+      daemon_reload: yes
+      state: started
+      enabled: yes
+    when: ( raspberry_oled == "ja" )

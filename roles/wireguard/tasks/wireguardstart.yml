@@ -1,0 +1,8 @@
+---
+  - name: "*wireguard* : Service wireguard via systemd starten"
+    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
+    systemd:
+      name: wg-quick@wg-uplink
+      daemon_reload: yes
+      state: started
+      enabled: yes

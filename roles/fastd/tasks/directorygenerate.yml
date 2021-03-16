@@ -1,0 +1,6 @@
+---
+  - name: "                               : Verzeichnis für fastd- Konfigurationsdatei anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/file_module.html
+    file:
+      path: /etc/fastd/{{ ffmuc_segment }}
+      state: directory

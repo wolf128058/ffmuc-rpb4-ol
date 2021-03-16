@@ -1,0 +1,15 @@
+# Django : 2019-09-11
+[Unit]
+# see man systemd.unit
+Description=Starting OLED-Trafic output
+Documentation=https://wiki.mailserver.guru/doku.php/centos:ansible:ffmuc-rpb4-ol
+After=network.target
+
+[Service]
+# see man systemd.service, systemd.exec
+ExecStart=/usr/bin/python3 /usr/local/src/raspberry-oled-bandwidth/bandwidth.py
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=default.target

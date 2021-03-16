@@ -1,0 +1,37 @@
+---
+  - name: "*wireguard* : private-key einlesen und in Variable übergeben"
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+    shell: cat /etc/wireguard/client_private.key
+    register: wg_client_privatekey
+
+  - name: "*wireguard* : public-key einlesen und in Variable übergeben"
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
+    shell: cat /etc/wireguard/client_public.key
+    register: wg_client_publickey
+
+  - name: "*wireguard* : Socket ermitteln"
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/set_fact_module.html
+    set_fact:
+      ffmuc_wireguard_port: "{{ item.value }}"
+    loop: "{{ lookup('dict', wireguard_ports) }}"
+    when: "ffmuc_segment in item.key"
+
+  - name: "*wireguard* : link-local des Gateways ermitteln"
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/set_fact_module.html
+    set_fact:
+      ffmuc_wireguard_linklocal: "{{ item.value }}"
+    loop: "{{ lookup('dict', gw_linklocal) }}"
+    when: "ffmuc_gateway in item.key"
+
+  - name: "*wireguard* : publickey des Gateways ermitteln"
+    # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/set_fact_module.html
+    set_fact:
+      ffmuc_wireguard_gwpubkey: "{{ item.value }}"
+    loop: "{{ lookup('dict', gw_publickey) }}"
+    when: "ffmuc_gateway in item.key"
+
+  - name: "*wireguard* : Konfigurationsdatei des wireguard-Tunnels erzeugen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/uplink.j2
+      dest: /etc/wireguard/wg-uplink.conf

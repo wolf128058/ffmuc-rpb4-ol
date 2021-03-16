@@ -1,0 +1,9 @@
+---
+  - name: "Paket hostapd für WLAN installieren"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt:
+      update_cache: yes
+      pkg:
+        - hostapd
+      state: present
+    when: ( raspberry_wifi == "ja" )

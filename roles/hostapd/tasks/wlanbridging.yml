@@ -1,0 +1,7 @@
+---
+  - name: "wlan0 in Bridge packen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/rclocal_wifi.j2
+      dest: /etc/rc.local
+    when: ( raspberry_wifi == "ja" )

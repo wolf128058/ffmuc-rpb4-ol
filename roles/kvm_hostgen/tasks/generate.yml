@@ -1,0 +1,9 @@
+--- # Virtuelle Maschine anlegen
+---
+  - name: "KVM Gast mit Hilfe von virt-install generieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell:
+      #cmd: hostnamectl set-hostname {{ raspberry_hostname }}
+      cmd: virt-install -n {{ kvm_gast_name }} --description "Test VM with ArchLINUX" --os-type=Linux --os-variant=generic --ram=4096 --vcpus=2 --disk path=/var/lib/libvirt/images/myARCHVM1.img,bus=virtio,size=20 --cdrom /var/lib/libvirt/boot/archlinux-2020.12.26-x86_64.iso --network bridge=br-dmz,model=virtio,mac=52:54:00:de:ad:01
+
+... #YAML Ende Syntax (optional)

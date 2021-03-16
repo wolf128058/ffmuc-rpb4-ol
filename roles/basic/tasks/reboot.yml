@@ -1,0 +1,4 @@
+---
+  - name: "Reboot nach update"
+    # https://docs.ansible.com/ansible/latest/modules/reboot_module.html
+    reboot: 

@@ -1,0 +1,7 @@
+---
+  - name: "hostapd Konfigurationsdatei anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/hostapd.j2
+      dest: /etc/hostapd/hostapd.conf
+    when: ( raspberry_wifi == "ja" )

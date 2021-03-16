@@ -1,0 +1,8 @@
+---
+  - name: "Service ext-respondd beim Booten starten"
+    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
+    systemd:
+      name: ext-respondd
+      daemon_reload: yes
+      state: started
+      enabled: yes

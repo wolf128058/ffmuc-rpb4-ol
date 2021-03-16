@@ -1,0 +1,7 @@
+---
+  - name: "Startscript für das OLED anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/oled-bandwidth.j2
+      dest: /etc/systemd/system/oled-bandwidth.service
+    when: ( raspberry_oled == "ja" )

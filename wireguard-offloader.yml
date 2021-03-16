@@ -1,0 +1,18 @@
+--- # Ansible Playbook für (statische) Konfiguration eines Offloader auf Basis eines Raspberry PI 4B
+- name:         raspi_offloader.yml 
+  hosts:        raspberry-wireguard
+  become:       yes
+  become_user:  root
+
+  roles:
+    - basic         # Basiskonfiguration des Hosts (Host-/Username anpassen und System Updaten)
+    - batman        # Installation und Konfiguration der BATMAN Kernel-Module
+    - wireguard     # Installation und Konfiguration des wireguard Tunnels
+    - vxlan         # Konfiguration von VXLAN für wireguard-Tunnel-Verbindung in Richtung Gateway
+    - ext-respondd  # Installation und Konfiguration des ext-respondd (Statistiken für https://map.ffmuc.net)
+    - hostapd       # Installation und Konfiguration des hostap Treibers für den WiFi-Support
+    - client-mesh   # Grundkonfiguration von Client und/oder Meshing (V)LANs
+    - oled          # Konfiguration eines OLEDisplays sofern eines am Respberry 4B verbaut ist
+    - final         # Reboot nach Abschluss der Konfiguration unseres Offloaders 
+
+... # YML Ende

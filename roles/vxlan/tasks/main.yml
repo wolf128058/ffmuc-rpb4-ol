@@ -1,0 +1,3 @@
+--- # Installation und Konfiguration von VXLAN
+- include: configure.yml                # VXLAN Konfigurieren
+- include: vxlanstart.yml               # Aktivierung des wireguard client-daemon

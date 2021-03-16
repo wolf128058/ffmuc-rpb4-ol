@@ -1,0 +1,23 @@
+---
+  - name: "*wireguard* : lokale link-local IPv6 Adresse aus dem PUBLIC-Key erzeugen"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: cat /etc/wireguard/client_public.key | md5sum | sed 's/^\(..\)\(..\)\(..\)\(..\)\(..\).*$/fe80::02\1:\2ff:fe\3:\4\5/'
+    register: wg_node_linklocal 
+
+  - name: "*wireguard* : checkupscript zum Testen der wireguard-Verbindung anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/checkup.j2
+      dest: /usr/local/bin/checkup
+
+  - name: "*wireguard* : Ausführungsrechte des Bash-Scripts anpassen"
+    # https://docs.ansible.com/ansible/latest/modules/file_module.html
+    file:
+      path: /usr/local/bin/checkup
+      mode: '0740'
+
+  - name: "*wireguard* : crontab für minütlichen checkup der wireguard-Verbindung anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/crontab.j2
+      dest: /etc/crontab

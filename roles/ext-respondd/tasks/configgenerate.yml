@@ -1,0 +1,6 @@
+---
+  - name: "Erstellen der resondd Konfigurationsdatei config.json"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/ext-respondd_config.json.j2
+      dest: /opt/ext-respondd/config.json

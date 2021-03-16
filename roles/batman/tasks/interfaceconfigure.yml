@@ -1,0 +1,6 @@
+---
+  - name: "*BATMAN-ADV Interfaces* : Konfiguration des Interfaces"  
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/interfaces.j2
+      dest: /etc/network/interfaces

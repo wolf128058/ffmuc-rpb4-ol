@@ -1,0 +1,6 @@
+---
+  - name: "                               : Installation von FASTD"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt: 
+      name: fastd
+      state: present

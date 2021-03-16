@@ -1,0 +1,7 @@
+---
+  - name: "Script zur Bandbreitenauslastung anpassen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template: 
+      src: templates/bandwidth.j2
+      dest: /usr/local/src/raspberry-oled-bandwidth/bandwidth.py
+    when: ( raspberry_oled == "ja" )

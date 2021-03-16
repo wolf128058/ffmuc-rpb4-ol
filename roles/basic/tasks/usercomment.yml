@@ -1,0 +1,7 @@
+---
+  - name: "Beschreibung des User 'pi' anpassen"
+    # https://docs.ansible.com/ansible/latest/modules/user_module.htm
+    user: 
+      name: pi
+      comment: "Raspberry Pi OS System User"
+      state: present

@@ -1,0 +1,3 @@
+--- # Virtuelle Maschine anlegen
+- include: generate.yml                # Hostname ändern
+... #YAML Ende Syntax (optional)

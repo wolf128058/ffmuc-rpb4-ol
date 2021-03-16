@@ -1,0 +1,7 @@
+---
+  - name: "vxlan_id für ausgewähltes Segment ermitteln"
+    # https://docs.ansible.com/ansible/latest/modules/set_fact_module.html
+    set_fact:
+      ffmuc_vxlan_id: "{{ item.value }}"
+    loop: "{{ lookup('dict', vxlan_ids) }}"
+    when: "ffmuc_segment in item.key"

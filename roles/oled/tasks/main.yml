@@ -1,0 +1,12 @@
+--- # Konfiguration eines OLEDisplays sofern eines am Respberry 4B verbaut ist
+- include: i2c-bcm2708.yml              # Für OLED-Konfiguration i2c-bcm2708 in /etc/modules eintragen
+- include: i2c-dev.yml                  # Für OLED-Konfiguration i2c-dev in /etc/modules eintragen
+- include: packages.yml                 # Installation der für das OLED benötigten Pakete
+- include: i2c_arm.yml                  # Laden des Kernelmodul i2c_arm beim Booten veranlassen
+- include: reboot.yml                   # Reboot nach Konfigurationsänderung
+- include: adafruitclone.yml            # Repo Adafruit_Python_SSD1306 klonen
+- include: adafruitconfig.yml           # Für OLED-Konfiguration Adafruit_Python_SSD1306 installieren
+- include: scriptclone.yml              # Script zur Anzeige klonen 
+- include: scriptconfig.yml             # Script zur Bandbreitenauslastung anpassen 
+- include: scriptstart.yml              # Startscript für das OLED anlegen 
+- include: scriptstartup.yml            # Service oled-bandwidth beim Booten starten

@@ -1,0 +1,5 @@
+---
+  - name: "Für OLED-Konfiguration i2c-dev in /etc/modules eintragen"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: echo i2c-dev >> /etc/modules
+    when: ( raspberry_oled == "ja" )

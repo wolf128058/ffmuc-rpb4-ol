@@ -1,0 +1,4 @@
+---
+  - name: "                               : Schlüssel für fastd erstellen"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: fastd --generate-key > /root/fastd.key 

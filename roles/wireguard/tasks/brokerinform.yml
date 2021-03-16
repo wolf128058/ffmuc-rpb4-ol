@@ -1,0 +1,14 @@
+---
+  - name: "*wireguard* : systemd unit file für broker -Information anlegen"    
+     # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/broker.j2
+      dest: /etc/systemd/system/broker.service
+
+  - name: "*wireguard* : Service broker starten beim Booten starten"
+    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
+    systemd:
+      name: broker
+      daemon_reload: yes
+      state: started
+      enabled: yes

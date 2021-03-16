@@ -1,0 +1,7 @@
+---
+  - name: "*radv-filter setzen* : Startsrcipt für der RADV-Filter anlegen"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/radv-filter.j2
+      dest: /usr/local/bin/radv-filter
+

@@ -1,0 +1,4 @@
+---
+  - name: "Reboot nach Abschluss der Konfiguration unseres Offloaders"
+    # https://docs.ansible.com/ansible/latest/modules/reboot_module.html
+    reboot:

@@ -1,0 +1,20 @@
+---
+  - name: "*buster-backport* : PGP-Schlüssel 04EE7237B7D453EC für buster-backports installieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell:
+      cmd: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-key 04EE7237B7D453EC
+
+  - name: "*buster-backport* : PGP-Schlüssel 648ACFD622F3D138 für buster-backports installieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell:
+      cmd: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-key 648ACFD622F3D138
+
+  - name: "*buster-backport* : buster-backports dem System bekannt machen"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell:
+      cmd: echo "deb http://deb.debian.org/debian buster-backports main" | tee /etc/apt/sources.list.d/buster-backports.list
+
+  - name: "*buster-backport* : APT-Cache aktualisieren" 
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt:
+      update_cache: yes

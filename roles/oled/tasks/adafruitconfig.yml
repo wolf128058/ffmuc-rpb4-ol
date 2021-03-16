@@ -1,0 +1,5 @@
+---
+  - name: "Für OLED-Konfiguration Adafruit_Python_SSD1306 installieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: cd /usr/local/src/Adafruit_Python_SSD1306 && python3 setup.py install && pip3 install Adafruit-BBIO
+    when: ( raspberry_oled == "ja" )

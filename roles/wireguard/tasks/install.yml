@@ -1,0 +1,8 @@
+---
+  - name: "*wireguard* : Installation von wireguard"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt: 
+      #update_cache: yes
+      pkg:
+       - wireguard
+      state: present

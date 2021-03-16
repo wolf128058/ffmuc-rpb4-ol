@@ -1,0 +1,8 @@
+---
+  - name: "Script zur Anzeige klonen"
+    # https://docs.ansible.com/ansible/latest/modules/git_module.html
+    git:
+      repo: https://github.com/awlx/raspberry-oled-bandwidth
+      dest: /usr/local/src/raspberry-oled-bandwidth
+      force: yes
+    when: ( raspberry_oled == "ja" )

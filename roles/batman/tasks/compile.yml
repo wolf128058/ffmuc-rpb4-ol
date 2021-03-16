@@ -1,0 +1,37 @@
+---
+  - name: "*BATMAN compile* : Installation des Dynamic Kernel Module Support Framework und der Header Files für den Raspberry Pi OS Linux Kernel"
+    # https://docs.ansible.com/ansible/latest/modules/apt_module.html
+    apt: 
+      update_cache: yes
+      pkg:
+        - dkms
+        - raspberrypi-kernel-headers
+      state: present
+
+  - name: "*BATMAN compile* : Rebuild BATMAN Kernel Header Dateien"
+    # https://docs.ansible.com/ansible/latest/modules/make_module.html
+    make:
+      chdir: /usr/src/linux-headers-{{ ansible_kernel }}
+      target: scripts
+    ignore_errors: yes
+
+  - name: "*BATMAN compile* : Anlegen der dkms.conf für Dynamic Kernel Module Support"
+    # https://docs.ansible.com/ansible/latest/modules/template_module.html
+    template:
+      src: templates/dkms.j2
+      dest: /usr/src/batman-adv-{{ batman_adv_version }}/dkms.conf
+
+  - name: "*BATMAN compile* : Dynamic Kernel Module Support hinzufügen"
+    # https://docs.ansible.com/ansible/latest/modules/command_module.html
+    command: dkms add -m batman-adv -v {{ batman_adv_version }}
+    register: ret
+    failed_when: ret.rc != 0 and ret.rc != 3
+    changed_when: ret.rc == 0
+
+  - name: "*BATMAN compile* : Dynamic Kernel Module bauen"
+    # https://docs.ansible.com/ansible/latest/modules/command_module.html
+    command: dkms build -m batman-adv -v {{ batman_adv_version }}
+
+  - name: "*BATMAN compile* : BATMAN Dynamic Kernel Module installieren"
+    # https://docs.ansible.com/ansible/latest/modules/command_module.html
+    command: dkms install -m batman-adv -v {{batman_adv_version }}

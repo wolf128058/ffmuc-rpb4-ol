@@ -1,0 +1,6 @@
+---
+  - name: "Repo ext-respondd klonen"
+    # https://docs.ansible.com/ansible/latest/modules/git_module.html
+    git:
+      repo: https://github.com/freifunkMUC/ext-respondd
+      dest: /opt/ext-respondd/

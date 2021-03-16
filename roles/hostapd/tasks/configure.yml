@@ -1,0 +1,5 @@
+---
+  - name: "hostapd konfigurieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: echo 'DAEMON_OPTS="-d"' >> /etc/default/hostapd
+    when: ( raspberry_wifi == "ja" )

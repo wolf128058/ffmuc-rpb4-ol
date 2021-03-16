@@ -1,0 +1,5 @@
+---
+  - name: "Systemd Startdatei für respondd kopieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: 
+      cmd: cp /opt/ext-respondd/ext-respondd.service.example /etc/systemd/system/ext-respondd.service

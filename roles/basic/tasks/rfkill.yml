@@ -1,0 +1,5 @@
+---
+  - name: "Service rfkill am Raspberry deaktivieren"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: 
+      cmd: rfkill unblock wifi

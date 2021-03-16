@@ -1,0 +1,19 @@
+---
+  - name: "*wireguard* : Schlüsselmaterial erstellen"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: /usr/bin/wg genkey | tee client_private.key | wg pubkey | tee client_public.key 
+    args:
+      chdir: /etc/wireguard/
+      creates: client_private.key  
+
+  - name: "*wireguard* : Zugriffsrechte des Private Keys anpassen"
+    # https://docs.ansible.com/ansible/latest/modules/file_module.html
+    file: 
+      path: /etc/wireguard/client_private.key
+      mode: '0600'
+
+  - name: "*wireguard* : Zugriffsrechte des Public Keys anpassen"
+    # https://docs.ansible.com/ansible/latest/modules/file_module.html
+    file: 
+      path: /etc/wireguard/client_public.key
+      mode: '0600'

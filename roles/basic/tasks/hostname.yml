@@ -1,0 +1,5 @@
+---
+  - name: "Hostname ändern"
+    # https://docs.ansible.com/ansible/latest/modules/shell_module.html
+    shell: 
+      cmd: hostnamectl set-hostname {{ raspberry_hostname }}
