@@ -1,7 +1,0 @@
----
-  - name: "                               : Service fastd beim Booten starten"
-    # https://docs.ansible.com/ansible/latest/modules/systemd_module.html
-    systemd:
-      name: fastd@{{ ffmuc_segment }}
-      state: started
-      enabled: yes

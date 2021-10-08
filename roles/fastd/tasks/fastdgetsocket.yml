@@ -1,7 +1,0 @@
----
-  - name: "                               : FASTD Socket ermitteln"
-    # https://docs.ansible.com/ansible/latest/modules/set_fact_module.html
-    set_fact:
-      ffmuc_fast_port: "{{ item.value }}"
-    loop: "{{ lookup('dict', fastd_ports) }}"
-    when: "ffmuc_segment in item.key"

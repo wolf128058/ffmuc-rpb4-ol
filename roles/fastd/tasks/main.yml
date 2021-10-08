@@ -1,8 +1,0 @@
---- # Installation und Konfiguration von fastd
-- include: fastdinstall.yml       # Installation von FASTD
-- include: directorygenerate.yml  # Verzeichnis für fastd- Konfigurationsdatei anlegen
-- include: fastdkeygen.yml        # Schlüssel für fastd erstellen
-- include: fastdsecretkeyget.yml  # FASTD Secret Key aus /root/fastd.key in Variable übergeben
-- include: fastdgetsocket.yml     # FASTD Socket ermitteln
-- include: fastdconfigure.yml     # Erstellen der fastd Konfigurationsdatei
-- include: fastdstartup.yml       # Service fastd beim Booten starten
