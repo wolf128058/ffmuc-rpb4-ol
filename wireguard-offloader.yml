@@ -3,7 +3,9 @@
   hosts:        raspberry-wireguard
   become:       yes
   become_user:  root
-
+  
+  tags:
+    - basicsetup
   roles:
     - basic         # Basiskonfiguration des Hosts (Host-/Username anpassen und System Updaten)
     - batman        # Installation und Konfiguration der BATMAN Kernel-Module
@@ -14,5 +16,19 @@
     - client-mesh   # Grundkonfiguration von Client und/oder Meshing (V)LANs
     - oled          # Konfiguration eines OLEDisplays sofern eines am Respberry 4B verbaut ist
     - final         # Reboot nach Abschluss der Konfiguration unseres Offloaders 
+
+- name: IP-Tables
+  hosts: raspberry-wireguard
+  tags:
+    - iptables
+  roles:
+    - iptables
+
+- name: Fail2Ban
+  hosts: raspberry-wireguard
+  tags:
+    - fail2ban
+  roles:
+    - fail2ban
 
 ... # YML Ende

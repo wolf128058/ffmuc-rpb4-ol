@@ -1,0 +1,31 @@
+# roles/iptables-install/tasks/main.yml
+---
+- name: Install iptables
+  become: yes
+  apt:
+    cache_valid_time: 3600
+    pkg:
+      - iptables
+    state: present
+
+- name: iptables | make config-dir
+  become: yes
+  file:
+    path: /etc/iptables/
+    state: directory
+    mode: '0755'
+
+- name: iptables | copy iptables-rule file (IPv4)
+  become: yes
+  template:
+    src: rules.v4.j2
+    dest: /etc/iptables/rules.v4
+  notify: load rules for IPv4
+
+- name: iptables | copy iptables-rule file (IPv6)
+  become: yes
+  template:
+    src: rules.v6.j2
+    dest: /etc/iptables/rules.v6
+  notify: load rules for IPv6
+

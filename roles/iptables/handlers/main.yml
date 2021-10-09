@@ -1,0 +1,9 @@
+# roles/iptables-install/handlers/main.yml
+---
+- name: load rules for IPv4
+  become: yes
+  shell: iptables-restore < /etc/iptables/rules.v4
+
+- name: load rules for IPv6
+  become: yes
+  shell: ip6tables-restore < /etc/iptables/rules.v6
